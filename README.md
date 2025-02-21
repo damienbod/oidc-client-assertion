@@ -1,6 +1,6 @@
 # Use client assertions in OpenID Connect and ASP.NET Core
 
-
+[![.NET](https://github.com/damienbod/oidc-client-assertion/actions/workflows/dotnet.yml/badge.svg)](https://github.com/damienbod/oidc-client-assertion/actions/workflows/dotnet.yml)
 
 ```csharp
 
