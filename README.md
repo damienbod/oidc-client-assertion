@@ -61,3 +61,5 @@ https://github.com/AzureAD/microsoft-identity-web/blob/2b8fbf0104d820bba8785c41b
 https://curity.io/resources/learn/jwt-assertion/
 
 https://oauth.net/private-key-jwt/
+
+https://github.com/AzureAD/microsoft-identity-web/wiki/Using-certificates
