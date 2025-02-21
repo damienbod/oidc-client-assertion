@@ -6,6 +6,10 @@ namespace Ahead.Idp;
 
 public static class CertService
 {
+    /// <summary>
+    /// See original src:
+    /// https://learn.microsoft.com/en-us/entra/msal/dotnet/acquiring-tokens/web-apps-apis/confidential-client-assertions#crafting-the-assertion
+    /// </summary>
     public static string GetSignedClientAssertion(X509Certificate2 certificate, string tenantId, string clientId)
     {
         // single tenant

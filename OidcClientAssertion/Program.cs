@@ -1,9 +1,7 @@
 using Ahead.Idp;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Cryptography.X509Certificates;
@@ -19,7 +17,7 @@ namespace OidcClientAssertion
             // Add services to the container.
             builder.Services.AddRazorPages();
 
-            var cs = CertService.GetSignedClientAssertion(
+            var clientAssertion = CertService.GetSignedClientAssertion(
                 X509CertificateLoader.LoadPkcs12FromFile("cert_rsa512.pfx", "1234"),
                 builder.Configuration["AzureAd:TenantId"]!,
                 builder.Configuration["AzureAd:ClientId"]!);
@@ -43,22 +41,16 @@ namespace OidcClientAssertion
 
                     oidcOptions.Events = new OpenIdConnectEvents
                     {
-                        OnTokenResponseReceived = context =>
-                        {
-                            var at = context.TokenEndpointResponse.AccessToken;
-                            var idt = context.TokenEndpointResponse.IdToken;
-                            return Task.FromResult(0);
-                        },
                         // Add client_assertion            
                         OnAuthorizationCodeReceived = context =>
                         {
-                            context.TokenEndpointRequest.ClientAssertion = cs;
+                            context.TokenEndpointRequest!.ClientAssertion = clientAssertion;
                             context.TokenEndpointRequest.ClientAssertionType = "urn:ietf:params:oauth:client-assertion-type:jwt-bearer";
                             return Task.FromResult(0);
                         }
                         //OnPushAuthorization = context =>
                         //{
-                        //    context.TokenEndpointRequest.ClientAssertion = cs;
+                        //    context.TokenEndpointRequest.ClientAssertion = clientAssertion;
                         //    context.TokenEndpointRequest.ClientAssertionType = "urn:ietf:params:oauth:client-assertion-type:jwt-bearer";
                         //    return Task.FromResult(0);
                         //}
