@@ -66,8 +66,6 @@ public class Program
         builder.Services.AddAuthorizationBuilder()
             .SetFallbackPolicy(requireAuthPolicy);
 
-
-
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.
@@ -81,9 +79,7 @@ public class Program
         app.UseHttpsRedirection();
 
         app.UseRouting();
-
         app.UseAuthorization();
-
         app.MapStaticAssets();
         app.MapRazorPages()
            .WithStaticAssets();
