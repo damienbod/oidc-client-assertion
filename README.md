@@ -1,5 +1,7 @@
 # Use client assertions in OpenID Connect and ASP.NET Core
 
+
+
 ```csharp
 
 // single tenant
@@ -55,3 +57,6 @@ https://datatracker.ietf.org/doc/html/rfc7521
 https://learn.microsoft.com/en-us/entra/msal/dotnet/acquiring-tokens/web-apps-apis/confidential-client-assertions
 
 https://github.com/AzureAD/microsoft-identity-web/blob/2b8fbf0104d820bba8785c41b2ef9e6f801b5e73/src/Microsoft.Identity.Web.TokenAcquisition/MsAuth10AtPop.cs#L48
+
+https://curity.io/resources/learn/jwt-assertion/
+
