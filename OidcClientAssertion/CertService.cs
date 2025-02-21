@@ -2,7 +2,7 @@
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Cryptography.X509Certificates;
 
-namespace Ahead.Idp;
+namespace OidcClientAssertion;
 
 public static class CertService
 {
