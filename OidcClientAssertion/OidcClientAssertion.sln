@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateSelfSignedCertsConsole", "..\CreateSelfSignedCertsConsole\CreateSelfSignedCertsConsole.csproj", "{EABCD964-9B86-4B7C-AAC6-C00263AD148C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +22,10 @@ Global
 		{FAF1BA5B-543D-44D6-8BB0-B329BE1B6831}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FAF1BA5B-543D-44D6-8BB0-B329BE1B6831}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FAF1BA5B-543D-44D6-8BB0-B329BE1B6831}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EABCD964-9B86-4B7C-AAC6-C00263AD148C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EABCD964-9B86-4B7C-AAC6-C00263AD148C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EABCD964-9B86-4B7C-AAC6-C00263AD148C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EABCD964-9B86-4B7C-AAC6-C00263AD148C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
