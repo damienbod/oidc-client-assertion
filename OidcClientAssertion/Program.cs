@@ -16,9 +16,12 @@ public class Program
         // Add services to the container.
         builder.Services.AddRazorPages();
 
+        // single tenant
+        var aud = $"https://login.microsoftonline.com/{builder.Configuration["AzureAd:TenantId"]!}/oauth2/v2.0/token";
+
         var clientAssertion = CertService.GetSignedClientAssertion(
             X509CertificateLoader.LoadPkcs12FromFile("cert_rsa512.pfx", "1234"),
-            builder.Configuration["AzureAd:TenantId"]!,
+            aud,
             builder.Configuration["AzureAd:ClientId"]!);
 
         builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
