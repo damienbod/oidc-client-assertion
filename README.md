@@ -9,7 +9,9 @@ Client assertions is a method of client authentication which can be used in Open
 ![flow](https://github.com/damienbod/oidc-client-assertion/blob/main/images/oidc-confidential-pkce-code-flow-assertion.drawio.png)
 
 
-## Use an assertion in ASP.NET Core:
+## Use an assertion in ASP.NET Core (token request):
+
+when using OAuth PAR, the client assertion is set in the OnPushAuthorization event.
 
 ```csharp
 
