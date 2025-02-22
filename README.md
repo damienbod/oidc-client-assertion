@@ -22,41 +22,41 @@ var clientAssertion = CertService.GetSignedClientAssertion(
 	builder.Configuration["AzureAd:ClientId"]!);
 
 builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
-	.AddCookie(CookieAuthenticationDefaults.AuthenticationScheme)
-	.AddOpenIdConnect(OpenIdConnectDefaults.AuthenticationScheme, oidcOptions =>
-	{
-		oidcOptions.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-		oidcOptions.Scope.Add(OpenIdConnectScope.OpenIdProfile);
-		oidcOptions.Scope.Add("user.read");
-		oidcOptions.Scope.Add(OpenIdConnectScope.OfflineAccess);
-		oidcOptions.Authority = $"https://login.microsoftonline.com/{builder.Configuration["AzureAd:TenantId"]}/v2.0/";
-		oidcOptions.ClientId = builder.Configuration["AzureAd:ClientId"];
+.AddCookie(CookieAuthenticationDefaults.AuthenticationScheme)
+.AddOpenIdConnect(OpenIdConnectDefaults.AuthenticationScheme, oidcOptions =>
+{
+	oidcOptions.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+	oidcOptions.Scope.Add(OpenIdConnectScope.OpenIdProfile);
+	oidcOptions.Scope.Add("user.read");
+	oidcOptions.Scope.Add(OpenIdConnectScope.OfflineAccess);
+	oidcOptions.Authority = $"https://login.microsoftonline.com/{builder.Configuration["AzureAd:TenantId"]}/v2.0/";
+	oidcOptions.ClientId = builder.Configuration["AzureAd:ClientId"];
 		
-		oidcOptions.ResponseType = OpenIdConnectResponseType.Code;
-		oidcOptions.MapInboundClaims = false;
-		oidcOptions.SaveTokens = true;
-		oidcOptions.TokenValidationParameters.NameClaimType = JwtRegisteredClaimNames.Name;
-		oidcOptions.TokenValidationParameters.RoleClaimType = "role";
+	oidcOptions.ResponseType = OpenIdConnectResponseType.Code;
+	oidcOptions.MapInboundClaims = false;
+	oidcOptions.SaveTokens = true;
+	oidcOptions.TokenValidationParameters.NameClaimType = JwtRegisteredClaimNames.Name;
+	oidcOptions.TokenValidationParameters.RoleClaimType = "role";
 
-		//oidcOptions.ClientSecret = builder.Configuration["AzureAd:ClientSecret"];
+	//oidcOptions.ClientSecret = builder.Configuration["AzureAd:ClientSecret"];
 
-		oidcOptions.Events = new OpenIdConnectEvents
+	oidcOptions.Events = new OpenIdConnectEvents
+	{
+		// Add client_assertion            
+		OnAuthorizationCodeReceived = context =>
 		{
-			// Add client_assertion            
-			OnAuthorizationCodeReceived = context =>
-			{
-				context.TokenEndpointRequest!.ClientAssertion = clientAssertion;
-				context.TokenEndpointRequest.ClientAssertionType = "urn:ietf:params:oauth:client-assertion-type:jwt-bearer";
-				return Task.FromResult(0);
-			}
-			//OnPushAuthorization = context =>
-			//{
-			//    context.TokenEndpointRequest.ClientAssertion = clientAssertion;
-			//    context.TokenEndpointRequest.ClientAssertionType = "urn:ietf:params:oauth:client-assertion-type:jwt-bearer";
-			//    return Task.FromResult(0);
-			//}
-		};
-	});
+			context.TokenEndpointRequest!.ClientAssertion = clientAssertion;
+			context.TokenEndpointRequest.ClientAssertionType = "urn:ietf:params:oauth:client-assertion-type:jwt-bearer";
+			return Task.FromResult(0);
+		}
+		//OnPushAuthorization = context =>
+		//{
+		//    context.TokenEndpointRequest.ClientAssertion = clientAssertion;
+		//    context.TokenEndpointRequest.ClientAssertionType = "urn:ietf:params:oauth:client-assertion-type:jwt-bearer";
+		//    return Task.FromResult(0);
+		//}
+	};
+});
 ```
 
 ## Links
