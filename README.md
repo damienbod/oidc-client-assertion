@@ -2,6 +2,7 @@
 
 [![.NET](https://github.com/damienbod/oidc-client-assertion/actions/workflows/dotnet.yml/badge.svg)](https://github.com/damienbod/oidc-client-assertion/actions/workflows/dotnet.yml)
 
+![flow](https://github.com/damienbod/oidc-client-assertion/tree/main/images/oidc-confidential-pkce-code-flow-assertion.drawio.png)
 
 
 ## Use an assertion in ASP.NET Core:
