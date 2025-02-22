@@ -2,6 +2,10 @@
 
 [![.NET](https://github.com/damienbod/oidc-client-assertion/actions/workflows/dotnet.yml/badge.svg)](https://github.com/damienbod/oidc-client-assertion/actions/workflows/dotnet.yml)
 
+
+
+## Use an assertion in ASP.NET Core:
+
 ```csharp
 
 // single tenant
