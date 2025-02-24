@@ -2,7 +2,7 @@
 
 [![.NET](https://github.com/damienbod/oidc-client-assertion/actions/workflows/dotnet.yml/badge.svg)](https://github.com/damienbod/oidc-client-assertion/actions/workflows/dotnet.yml)
 
-Blog: [Use client assertions in OpenID Connect and ASP.NET Core](https://damienbod.com)
+Blog: [Use client assertions in OpenID Connect and ASP.NET Core](https://damienbod.com/2025/02/24/use-client-assertions-in-openid-connect-and-asp-net-core/)
 
 Client assertions is a method of client authentication which can be used in OpenID Connect. This provides an alternative to client secrets. This approach enhances security by using signed tokens (JWTs) to authenticate clients during the token request process or the OAuth PAR request. In ASP.NET Core, client assertions is not supported per default, a small implementation is required.
 
