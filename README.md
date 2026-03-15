@@ -10,6 +10,7 @@ Client assertions is a method of client authentication which can be used in Open
 
 ## History
 
+- 2026-03-15 Update packages
 - 2025-09-28 Update packages
 
 ## Use an assertion in ASP.NET Core (token request):
