@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
+using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Cryptography.X509Certificates;
 
@@ -48,14 +49,14 @@ public class Program
                     {
                         context.TokenEndpointRequest!.ClientAssertion = clientAssertion;
                         context.TokenEndpointRequest.ClientAssertionType = "urn:ietf:params:oauth:client-assertion-type:jwt-bearer";
-                        return Task.FromResult(0);
+                        return Task.CompletedTask;
+                    },
+                    OnPushAuthorization = context =>
+                    {
+                        context.ProtocolMessage.Parameters.Add("client_assertion", clientAssertion);
+                        context.ProtocolMessage.Parameters.Add("client_assertion_type", "urn:ietf:params:oauth:client-assertion-type:jwt-bearer");
+                        return Task.CompletedTask;
                     }
-                    //OnPushAuthorization = context =>
-                    //{
-                    //    context.TokenEndpointRequest.ClientAssertion = clientAssertion;
-                    //    context.TokenEndpointRequest.ClientAssertionType = "urn:ietf:params:oauth:client-assertion-type:jwt-bearer";
-                    //    return Task.FromResult(0);
-                    //}
                 };
             });
 
