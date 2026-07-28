@@ -10,7 +10,7 @@ Client assertions is a method of client authentication which can be used in Open
 
 ## History
 
-
+- 2026-07-28 Update packages
 - 2026-06-07 Update packages
 - 2026-03-15 Update packages
 - 2025-09-28 Update packages
